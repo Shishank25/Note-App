@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" id="note">
+  <g transform="translate(-8.52 -12.786)scale(4.2653)">
+    <rect width="12.005" height="14.005" x="3.498" y="3.498" fill="#fff" stroke="#696969" stroke-linecap="round" stroke-linejoin="round" rx=".982" ry=".993"></rect>
+    <rect width="1" height="13" x="5" y="4" fill="#ffb797" rx="0" ry="0"></rect>
+    <path fill="#a5a5a5" d="M3 5h1v1H3zM3 7h1v1H3zM3 9h1v1H3zM3 11h1v1H3zM3 13h1v1H3zM3 15h1v1H3z"></path>
+    <path fill="#c2c7d0" d="M4 7h1v1H4z"></path>
+    <path fill="#a5a5a5" d="M4 9h1v1H4zM4 11h1v1H4zM4 13h1v1H4zM4 15h1v1H4z"></path>
+    <path fill="#e1e1e1" d="M4 5h1v1H4z"></path>
+    <rect width="9" height="1" x="6" y="7" fill="#d8dfea" rx="0" ry="1"></rect>
+    <rect width="9" height="1" x="6" y="9" fill="#d8dfea" rx="0" ry="1"></rect>
+    <rect width="9" height="1" x="6" y="11" fill="#d8dfea" rx="0" ry="1"></rect>
+    <rect width="9" height="1" x="6" y="13" fill="#d8dfea" rx="0" ry="1"></rect>
+    <rect width="9" height="1" x="6" y="15" fill="#d8dfea" rx="0" ry="1"></rect>
+  </g>
+</svg>
