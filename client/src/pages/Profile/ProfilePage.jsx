@@ -109,26 +109,26 @@ const ProfilePage = () => {
 
                 <p className='italic dark:text-slate-400'>{userInfo.email}</p>
 
-                <div className='flex flex-col gap-10 h-17 mt-10 w-130 text-lg font-medium text-gray-600'>
-                    <div className='flex items-center'>
+                <div className='flex flex-col gap-10 h-17 mt-10 sm:w-130 text-lg font-medium text-gray-600'>
+                    <div className='flex flex-col sm:flex-row items-center'>
                         <p className='cursor-pointer underline h-8 hover:text-black transition-all ease-in' onClick={()=>setChangeType('name')}>Change name?</p>
 
                         {changeType === 'name' && 
                         <input 
                             type="text" 
-                            className='bg-neutral-300 ml-20 px-2 rounded-lg font-normal border-b outline-none text-black dark:text-slate-300 dark:bg-neutral-800' 
+                            className='bg-neutral-300 mt-5 sm:ml-20 sm:mt-0 px-2 rounded-lg font-normal border-b outline-none text-black dark:text-slate-300 dark:bg-neutral-800' 
                             value={name}
                             onChange={({target})=>setName(target.value)}
                         />}
 
                     </div>
 
-                    <div className='flex items-center'>
+                    <div className='flex flex-col sm:flex-row items-center'>
                         <p className='cursor-pointer underline h-8 hover:text-black transition-all ease-in' onClick={()=>setChangeType('password')}>Change password?</p>
                         {changeType ==='password' && 
                         <input 
                             type="text" 
-                            className='bg-neutral-300 ml-20 px-2 rounded-lg font-normal border-b outline-none text-black dark:text-slate-300 dark:bg-neutral-800'
+                            className='bg-neutral-300 mt-5 sm:ml-20 sm:mt-0 px-2 rounded-lg font-normal border-b outline-none text-black dark:text-slate-300 dark:bg-neutral-800'
                             value={password}  
                             onChange={({target})=>setPassword(target.value)}  
                         />}

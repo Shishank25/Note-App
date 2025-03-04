@@ -26,7 +26,7 @@ const Navbar = ({ userInfo, onSearchNote, handleClearSearch, pinnedNotes }) => {
 
   return (
     <>
-      <div className="flex bg-white items-center justify-between px-6 py-2 drop-shadow dark:bg-neutral-900">
+      <div className="flex bg-white items-center justify-between px-3 sm:px-6 py-2 drop-shadow dark:bg-neutral-900">
           <h2 className='text-xl font-medium text-black py-2 dark:bg-neutral-900 dark:text-slate-50'> .notes </h2>
 
           <SearchBar 

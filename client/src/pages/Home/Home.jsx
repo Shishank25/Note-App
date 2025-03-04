@@ -173,8 +173,8 @@ const Home = () => {
       
       <Navbar userInfo={userInfo} onSearchNote={onSearchNote} handleClearSearch={handleClearSearch} pinnedNotes={pinnedNotes}/> 
 
-      <div className="container mx-10">
-        {allNotes.length > 0 ? <div className="grid grid-cols-3 gap-4">
+      <div className="container mx-4 sm:mx-10">
+        {allNotes.length > 0 ? <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
 
           {allNotes.map((item, index) => (
 
@@ -198,12 +198,12 @@ const Home = () => {
       </div>
 
       <button 
-        className="h-16 w-16 flex items-center justify-center absolute right-10 bottom-10 cursor-pointer"
+        className="h-12 w-12 sm:h-16 sm:w-16 flex items-center justify-center absolute right-4 sm:right-10 bottom-4 sm:bottom-10 cursor-pointer"
         onClick={()=>{
           setOpenAddEditModal({ isShown: true, type: 'add', data: null });
           }}
       >
-        <MdAdd className="rounded-lg text-white bg-slate-400 text-[64px] hover:bg-slate-600 transition-all transition-[rounded] ease-in-out duration-300" />
+        <MdAdd className="rounded-lg text-white bg-slate-400 text-[48px] sm:text-[64px] hover:bg-slate-600 transition-all transition-[rounded] ease-in-out duration-300" />
       </button>
 
       <Modal 
@@ -212,7 +212,7 @@ const Home = () => {
         style={ 
           {overlay: {backgroundColor: 'rgba(0,0,0,0.2)'}}
         }
-        className='mt-20 h-auto w-[40%] mx-auto'
+        className='mt-20 h-auto w-[90%] sm:w-[60%] md:w-[40%] mx-auto'
       >
           <div className="mx-10">
             <AddEditNotes

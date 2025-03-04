@@ -26,18 +26,18 @@ const SearchBar = ({ value, onChange, handleSearch, onClearSearch, pinnedNotes }
   },[getPinnedNotes]);
 
   return (
-    <div className='w-80 flex items-center px-4 rounded'>
+    <div className='w-80 flex items-center justify-center px-4 rounded'>
         <input
           type="text"
           placeholder='Search notes'
-          className='w-full text-xs bg-transparent outline-none py-[11px] mt-2'
+          className='w-1/2 sm:w-full text-xs bg-transparent outline-none py-[11px] mt-2'
           value={value}
           onChange={onChange}
           onKeyDown={handleKeyDown}
         />
         {value && <IoMdClose className='text-slate-400 mr-2 cursor-pointer hover:text-black' onClick={onClearSearch}/>}
         <FaMagnifyingGlass className='text-slate-400 cursor-pointer hover:text-black' onClick={handleSearch}/>
-        <BsFillPinFill className={`ml-10 cursor-pointer text-xl hover:text-slate-600 duration-300 ${getPinnedNotes ? 'text-black' : 'text-slate-400'}`} onClick={handlePinSearch} />
+        <BsFillPinFill className={`ml-6 sm:ml-10 cursor-pointer text-xl hover:text-slate-600 duration-300 ${getPinnedNotes ? 'text-black' : 'text-slate-400'}`} onClick={handlePinSearch} />
     </div>
   )
 }
