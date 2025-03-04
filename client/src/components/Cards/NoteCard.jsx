@@ -18,7 +18,7 @@ const NoteCard = ({
 
   return (
     <div 
-        className='max-w-100 rounded p-4 hover:shadow-2xl hover:scale-120 hover:cursor-pointer transition-all duration-1000 ease-out mt-4'
+        className='max-w-9/10 sm:max-w-100 rounded p-4 hover:shadow-2xl hover:scale-120 hover:cursor-pointer transition-all duration-1000 ease-out mt-4'
     >
         <div className='flex items-center justify-between'>
             <div onClick={handleView}>
