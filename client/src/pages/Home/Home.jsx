@@ -17,7 +17,7 @@ Modal.setAppElement("#root");
 
 const Home = () => {
 
-  const [openAddEditModal, setOpenAddEditModal] = useState({
+  const [ openAddEditModal, setOpenAddEditModal ] = useState({
                                                     isShown: false,
                                                     type: 'add',
                                                     data: null,

@@ -27,7 +27,7 @@ const NoteCard = ({
             </div>
 
             <MdOutlinePushPin 
-            className={`${isPinned ? 'black' : 'text-slate-400'} hover:text-black transition-all ease-in-out`} 
+            className={`${isPinned ? 'black' : 'text-slate-600'} hover:text-black transition-all ease-in-out`} 
             onClick={onPinNote} />
         </div>
         <p className="content text-xs text-slate-800 dark:text-slate-400" onClick={handleView}>{content?.slice(0, 60)}</p>

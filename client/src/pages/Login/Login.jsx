@@ -80,6 +80,9 @@ const Login = () => {
                 <p className='mt-10 text-center'>Not Registered yet? <br />
                     <Link to="/register" className='underline text-primary font-medium'>Create an Account</Link>
                 </p>
+                <p className='mt-5 text-center'>
+                    <Link to="/forgot-password" className='underline text-primary font-medium'>Forgot Password?</Link>
+                </p>
             </form>
         </div>
     </div>

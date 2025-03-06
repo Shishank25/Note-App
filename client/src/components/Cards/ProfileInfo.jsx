@@ -9,7 +9,7 @@ const ProfileInfo = ({ userInfo, onLogout }) => {
     <div className='flex items-center p-4 gap-3 hover:scale-125 transition-all duration-500'>
         
         <div 
-          className='flex items-center justify-center w-10 h-10 font-medium hover:cursor-pointer rounded-full hover:bg-gray-300 dark:hover:bg-gray-600 transition-all linear duration-200'
+          className='flex items-center justify-center w-10 h-10 font-medium hover:cursor-pointer rounded-full bg-gray-500 sm:bg-transparent hover:bg-gray-300 dark:hover:bg-gray-600 transition-all linear duration-200'
           onClick={()=>navigate('/user-profile')}  
         >
             {getInitials(userInfo?.fullName)}

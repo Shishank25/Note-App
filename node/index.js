@@ -11,9 +11,11 @@ const app = express();
 
 const jwt = require('jsonwebtoken');
 const { authenticateToken } = require("./utilities");
+const sendMail = require("./mailer");
 
 const User = require('./models/user-model');
 const Note = require('./models/note-model');
+const Blacklist = require('./models/blacklist-model');
 
 app.use(express.json());
 
@@ -431,6 +433,94 @@ app.put('/change-password', authenticateToken, async (req, res) => {
         });
     }
 });
+
+// Forgot Password 
+app.post('/forgot-password', async (req, res) => {
+    const { email } = req.body;
+
+    const isUser = await User.findOne({ email: email });
+
+    if ( !isUser ) return res.status(400).json({ error: true, message: "User not found, Please enter a registered email address or Sign up" });
+
+    const  reset_token = jwt.sign({ id: isUser._id }, process.env.RESET_PASSWORD_TOKEN, { expiresIn: "30m" });
+
+    const reset_link = 'https://note-app-client-wheat.vercel.app/reset-password/' + reset_token; 
+
+    await sendMail(isUser.email, "Reset Your Password", `Click here to reset your password: ${reset_link} (Only valid for 30 minutes)`);
+
+    res.json({ error: false, message: "Reset email sent! The Link is only valid for 30 minutes", link: reset_link });
+
+});
+
+// Reset Link Verification
+app.post('/reset-password/verification/:token', async (req, res) => {
+    const { token } = req.params;
+
+    const isUsed = await Blacklist.findOne({ token: token });
+
+    if (isUsed) return res.status(400).json({ error: true, message: "Token is invalid or has been used" });
+
+    try {
+        const decodedToken = jwt.verify(token, process.env.RESET_PASSWORD_TOKEN);
+        const user = await User.findById(decodedToken.id);
+
+        if (!user) return res.status(400).json({ error: true,  message: "Your link is either invalid or expired." });
+
+        return res.json({
+            error: false,
+            message: 'Link is Valid'
+    });
+    } catch (error) {
+        if (error.name === "TokenExpiredError") {
+            return res.status(400).json({ message: "Token expired, please request a new one" });
+        } else {
+            return res.status(400).json({ message: "Invalid token" });
+        }
+    }
+});
+
+// Reset Password 
+app.post('/reset-password/:token', async (req,res) =>{
+    const { token } = req.params;
+    const { newPassword } = req.body;
+
+    try {
+        const decodedToken = jwt.verify(token, process.env.RESET_PASSWORD_TOKEN);
+        const user = await User.findById(decodedToken.id);
+
+        if (!user) return res.status(400).json({ error:true,  message: "Your link is either invalid or expired." });
+
+        if ( newPassword ) {
+            if ( user.password !== newPassword ) {
+                user.password = newPassword
+            } else {
+                return res.status(400).json({ error: true ,message: "New Password cannot be same as Old Password" });
+            }
+        }
+
+        await user.save();
+
+        const usedToken = new Blacklist({
+            token: token,
+            email: user.email
+        });
+
+        await usedToken.save();
+
+        return res.json({
+            error: false,
+            message: "Your new Password is set",
+        });
+        
+        
+    } catch (error) {
+        if (error.name === "TokenExpiredError") {
+            return res.status(400).json({ message: "Token expired, please request a new one" });
+        } else {
+            return res.status(400).json({ message: "Unable to process your request" });
+        }
+    }
+})
 
 
 app.listen(8000);
